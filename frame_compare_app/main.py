@@ -1,11 +1,12 @@
-"""Simple GUI example to display the first frame of two videos."""
+"""Entry point for the frame comparison application."""
 
 import sys
-from pathlib import Path
-from typing import Optional
 
-import cv2
-from PyQt5 import QtGui, QtWidgets
+from PyQt5 import QtWidgets
+
+codex/implement-gui-features-for-video-comparison
+from modules.video_manager import VideoManager
+from modules.gui import FrameCompareWindow
 
 from modules.media_manager import MediaSource
 
@@ -46,12 +47,11 @@ class MainWindow(QtWidgets.QMainWindow):
             img_b = frame_to_qimage(frame_b[1])
             self.label_b.setPixmap(QtGui.QPixmap.fromImage(img_b))
 
-
 def main(path_a: str, path_b: str) -> None:
     video_a = MediaSource(path_a)
     video_b = MediaSource(path_b)
     app = QtWidgets.QApplication(sys.argv)
-    win = MainWindow(video_a, video_b)
+    win = FrameCompareWindow(video_a, video_b)
     win.show()
     app.exec_()
     video_a.release()
