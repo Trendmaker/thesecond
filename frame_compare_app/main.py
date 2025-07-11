@@ -2,9 +2,9 @@
 
 import sys
 
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtGui
+import cv2
 
-codex/implement-gui-features-for-video-comparison
 from modules.video_manager import VideoManager
 from modules.gui import FrameCompareWindow
 
