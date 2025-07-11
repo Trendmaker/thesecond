@@ -7,7 +7,7 @@ from typing import Optional
 import cv2
 from PyQt5 import QtGui, QtWidgets
 
-from modules.video_manager import VideoManager
+from modules.media_manager import MediaSource
 
 
 def frame_to_qimage(frame) -> QtGui.QImage:
@@ -19,7 +19,7 @@ def frame_to_qimage(frame) -> QtGui.QImage:
 
 
 class MainWindow(QtWidgets.QMainWindow):
-    def __init__(self, video_a: VideoManager, video_b: VideoManager) -> None:
+    def __init__(self, video_a: MediaSource, video_b: MediaSource) -> None:
         super().__init__()
         self.video_a = video_a
         self.video_b = video_b
@@ -48,8 +48,8 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
 def main(path_a: str, path_b: str) -> None:
-    video_a = VideoManager(path_a)
-    video_b = VideoManager(path_b)
+    video_a = MediaSource(path_a)
+    video_b = MediaSource(path_b)
     app = QtWidgets.QApplication(sys.argv)
     win = MainWindow(video_a, video_b)
     win.show()
